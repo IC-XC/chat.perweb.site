@@ -1,0 +1,318 @@
+/* Chat container */
+.chat-container {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 20px;
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5; /* lichtgrijze WhatsApp-achtige achtergrond */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark / Light modes */
+.light-mode {
+  background-color: #f0f2f5;
+  color: #111;
+}
+
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+/* Title */
+.chat-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: inherit; /* geen kleur, standaard */
+}
+
+/* Dark mode toggle knop gelijk aan resetknop */
+.dark-mode-toggle {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.dark-mode-toggle button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #ccc;   /* zoals resetknop */
+  background-color: #fff;    /* zoals resetknop */
+  color: #000;
+  font-weight: normal;
+}
+
+/* Username input */
+.username-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.username-wrapper input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.username-wrapper input:focus {
+  border-color: #4caf50;
+}
+
+/* Resetknop */
+.username-wrapper button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Type selector */
+.type-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.type-wrapper select,
+.type-wrapper input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.type-wrapper select:focus,
+.type-wrapper input:focus {
+  border-color: #4caf50;
+}
+
+/* Messages wrapper met WhatsApp-achtig patroon */
+.messages-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #e5ddd5; /* originele WhatsApp-kleur */
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  background-size: 100% 4px; /* subtiele strepen zoals WhatsApp */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+.dark-mode .messages-wrapper {
+  background-color: #121212;
+  background-image: none; /* patroon niet zichtbaar in dark mode */
+}
+
+/* Individual message */
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  position: relative;
+  background-color: #fff;
+  color: #111;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  word-wrap: break-word;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode .message {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+.message.own {
+  align-self: flex-end;
+  background-color: #dcf8c6; /* WhatsApp groene bubble */
+}
+
+.dark-mode .message.own {
+  background-color: #2e7d32; /* donkerder groen in dark mode */
+}
+
+.message.private {
+  border: 2px dashed #ff9800;
+}
+
+/* Message text meta */
+.message .username {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+  opacity: 0.7;
+}
+
+.message .time {
+  font-size: 0.65rem;
+  color: #555;
+  text-align: right;
+  margin-top: 2px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  border: none;
+  background: transparent;
+  color: #e53935;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: transform 0.1s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Emoji picker */
+.emoji-picker {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background-color: #f4f6f8;
+}
+
+.dark-mode .emoji-picker {
+  background-color: #333;
+}
+
+.emoji-picker button {
+  font-size: 1.6rem;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.emoji-picker button:hover {
+  transform: scale(1.2);
+}
+
+/* Form */
+.message-form {
+  display: flex;
+  gap: 6px;
+}
+
+.message-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.message-form input:focus {
+  border-color: #4caf50;
+}
+
+.message-form button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.message-form button:hover {
+  transform: scale(1.05);
+  background-color: #45a049;
+}
+
+/* Scrollbar style */
+.messages-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.25);
+  border-radius: 3px;
+}
+
+.dark-mode .messages-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.25);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive voor iPhone/iPad */
+@media (max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+    margin: 1rem;
+    padding: 12px;
+  }
+
+  .chat-title {
+    font-size: 1.6rem;
+  }
+
+  .messages-wrapper {
+    padding: 8px;
+    gap: 6px;
+    max-height: 70vh;
+  }
+
+  .message-form input,
+  .username-wrapper input,
+  .type-wrapper select,
+  .type-wrapper input {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  .message-form button,
+  .username-wrapper button,
+  .dark-mode-toggle button {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  .emoji-picker {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .emoji-picker button {
+    font-size: 1.3rem;
+    padding: 4px;
+  }
+}
